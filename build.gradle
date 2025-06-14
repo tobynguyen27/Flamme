@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
 	id "fabric-loom" version "${loom_version}"
 	id "org.jetbrains.kotlin.jvm" version "2.1.21"
+	id "com.diffplug.spotless" version "7.0.4"
 }
 
 version = project.mod_version + "-fabric"
@@ -67,5 +68,31 @@ jar {
 
 	from("LICENSE") {
 		rename { "${it}_${inputs.properties.archivesName}"}
+	}
+}
+
+spotless {
+	encoding "UTF-8"
+
+	kotlin {
+		target "src/*/kotlin/**/*.kt"
+
+		ktlint()
+		endWithNewline()
+		toggleOffOn()
+	}
+
+	json {
+		target "src/*/resources/**/*.json"
+		targetExclude "src/generated/resources/**"
+
+		endWithNewline()
+	}
+
+	format("dotfiles") {
+		target(".gitignore", ".gitattributes", ".editorconfig")
+
+		trimTrailingWhitespace()
+		endWithNewline()
 	}
 }
