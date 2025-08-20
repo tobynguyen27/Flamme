@@ -1,0 +1,22 @@
+[versions]
+kotlin = "2.2.0"
+minecraft = "1.18.2"
+fabricLoom = "1.10-SNAPSHOT"
+fabricLoader = "0.16.14"
+fabricApi = "0.77.0+1.18.2"
+fabricKotlin = "1.13.4+kotlin.2.2.0"
+spotless = "7.2.1"
+modMenu = "3.2.5"
+
+[libraries]
+minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft"}
+fabricLoader = { module = "net.fabricmc:fabric-loader", version.ref = "fabricLoader"}
+fabricApi = { module = "net.fabricmc.fabric-api:fabric-api", version.ref = "fabricApi"}
+fabricKotlin = { module = "net.fabricmc:fabric-language-kotlin", version.ref = "fabricKotlin"}
+fabricJunit = { module = "net.fabricmc:fabric-loader-junit", version.ref = "fabricLoader" }
+modMenu = { module = "com.terraformersmc:modmenu", version.ref = "modMenu" }
+
+[plugins]
+kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin"}
+fabricLoom = { id = "fabric-loom", version.ref = "fabricLoom"}
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless"}
