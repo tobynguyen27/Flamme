@@ -2,7 +2,9 @@ plugins {
     alias(libs.plugins.kotlin)
     alias(libs.plugins.fabricLoom)
     alias(libs.plugins.spotless)
+
     idea
+    `maven-publish`
 }
 
 val maven_group: String by project
@@ -126,5 +128,16 @@ idea {
     module {
         isDownloadJavadoc = true
         isDownloadSources = true
+    }
+}
+
+publishing {
+    publications {
+        create("mavenJava", MavenPublication::class.java) {
+            artifactId = mod_id
+            groupId = maven_group
+
+            from(components["java"])
+        }
     }
 }
